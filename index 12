@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login and Registration Form</title>
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/834f3f4847.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">
+                Login Form
+            </div>
+            <div class="title signup">
+                Signup Form
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+                <form action="#" class="login">
+                    <div class="field" id="loginEmailField">
+                        <input type="text" id="loginEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="field" id="loginPasswordField">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <div class="field" id="loginSelectField">
+                        <label for="loginAs"></label>
+                        <select name="loginAs" id="loginAs">
+                            <option value="loginAs">Login as :</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="admin">Admin</option>
+                            <option value="Patient">Patient</option>
+                        </select>
+                    </div>
+                    <div class="pass-link" id="loginForgotPassword">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">
+                        Not a member? <a href="">Signup now</a>
+                    </div>
+                </form>
+                <form action="#" class="signup">
+                  <div class="field">
+                        <input type="text" id="name" placeholder="Name" onkeyup="validateName()" required>
+
+                        <span id="name-error"></span>
+                    </div>
+                    <div class="field">
+                        <input type="email" id="email" placeholder="Email Address" onkeyup="validateEmail()" required>
+
+                        <span id="email-error"></span>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="address" placeholder="Address" onkeyup="validateAddress()" required>
+
+                        <span id="address-error"></span>
+                    </div>
+                    <div class="field">
+                        <input type="number" id="number" placeholder="Contact Number" onkeyup="validateNumber()" required>
+
+                        <span id="contact-error"></span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="pass1" placeholder="Password" onkeyup="validatePass1()" required>
+
+                        <span id="pass1-error"></span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="pass2" placeholder="Confirm password" onkeyup="validatePass2()" required>
+
+                        <span id="pass2-error"></span>
+                    </div>
+
+
+
+                    <div class="field">
+                        <label for="bloodGroup"></label>
+                        <select name="bloodGroup" id="bloodGroup" onkeyup="validateBlood()">
+                            <option value="bloodGroup">Blood Group ?</option>
+                            <option value="aPositive">A+</option>
+                            <option value="bPositive">B+</option>
+                            <option value="oPositive">O+</option>
+                            <option value="aNegative">A-</option>
+                            <option value="bNegative">B-</option>
+                            <option value="oNegative">O-</option>
+                        </select>
+
+                        <span id="blood-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="gender"></label>
+                        <select name="gender" id="gender">
+                            <option value="gender">Gender ?</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="transgender">Transgender</option>
+                        </select>
+                        <i class="fa " aria-hidden="true"></i>
+                        <span></span>
+                    </div>
+                    <div class="field">
+                        <input type="date" id="date" placeholder="Date Of Birth ?">
+                        <i class="fa " aria-hidden="true"></i>
+                        <span></span>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" id="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="index1.js"></script>
+</body>
+
+</html>

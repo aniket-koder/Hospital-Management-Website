@@ -1,0 +1,156 @@
+<?php include ('../../datalayer/bookserver.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin</title>
+	<link rel="stylesheet"  href="style5.css" type="text/css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/834f3f4847.js" crossorigin="anonymous"></script>
+</head>
+
+<header>
+		<nav>
+
+
+
+
+		<ul>
+
+
+
+			<li><a href="viewdoctor.html">View Doctors</a></li>
+			<li><a href=" viewpatients.html">View Patients</a></li>
+
+  			<li><a href="../../applicationlayer/index.html">Logout</a></li>
+
+
+
+
+
+
+
+
+		</ul>
+
+
+
+
+	</nav>
+
+
+
+
+</header>
+<body>
+
+		<div class="headerA">
+	<h2>Add Doctor/patient</h2>
+</div>
+
+<form method="post" action="index3.html">
+
+	<?php include ('../../datalayer/errors.php'); ?>
+
+
+
+	<div class="field">
+				<input type="text" id="name" placeholder="Name" onkeyup="validateName()" required>
+
+				<span id="name-error"></span>
+		</div>
+		<div class="field">
+				<input type="email" id="email" placeholder="Email Address" onkeyup="validateEmail()" required>
+
+				<span id="email-error"></span>
+		</div>
+		<div class="field">
+				<input type="text" id="address" placeholder="Address" onkeyup="validateAddress()" required>
+
+				<span id="address-error"></span>
+		</div>
+		<div class="field">
+				<input type="number" id="number" placeholder="Contact Number" onkeyup="validateNumber()" required>
+
+				<span id="contact-error"></span>
+		</div>
+		<div class="field">
+				<input type="password" id="pass1" placeholder="Password" onkeyup="validatePass1()" required>
+
+				<span id="pass1-error"></span>
+		</div>
+		<div class="field">
+				<input type="password" id="pass2" placeholder="Confirm password" onkeyup="validatePass2()" required>
+
+				<span id="pass2-error"></span>
+		</div>
+
+
+
+		<div class="field">
+				<label for="bloodGroup"></label>
+
+				<select name="bloodGroup" id="bloodGroup" onclick="validateBlood()" required>
+						<option value="bloodGroup" hidden>Blood Group ?</option>
+						<option value="aPositive">A+</option>
+						<option value="bPositive">B+</option>
+						<option value="oPositive">O+</option>
+						<option value="aNegative">A-</option>
+						<option value="bNegative">B-</option>
+						<option value="oNegative">O-</option>
+				</select>
+
+				<span id="blood-error"></span>
+		</div>
+		<div class="field">
+				<label for="gender"></label>
+				<select name="gender" id="gender" onclick="validateGender()" required>
+
+						<option value="gender"  hidden>Gender ?</option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="transgender">others</option>
+				</select>
+
+				<span id="gender-error"></span>
+		</div>
+		<div class="field">
+			<label for="date"></label>
+				<input type="text" id="date" placeholder="date of birth ?" onfocus="(this.type='date')" onclick="validateDate()" required>
+
+				<span id="date-error"></span>
+		</div>
+<div class="field">
+	<label for="category"></label>
+	   	<select name="category" id="category" onclick="validateCategory()" required>
+				<option value="category"  hidden>Add doctor/patient</option>
+	   		<option value="doctor" >Doctor</option>
+	   		<option value="Patient">Patient</option>
+
+
+
+
+	   	</select>
+			<span id="category-error"></span>
+	   	</div>
+
+	<div class="field">
+		<button type="submit" name="Add" class="btnA">Submit</button>
+	</div>
+
+
+
+
+
+
+
+</form>
+</form>
+	
+
+
+
+
+<script src="index2.js"></script>
+</body>
+</html>

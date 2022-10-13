@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Validations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Register</h2>
+
+            <div class="input-field">
+                <label for="">Name</label>
+                <input type="text" id="username" placeholder="xyz" required>
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+
+            <div class="input-field">
+                <label for="">Email</label>
+                <input type="text" id="email" placeholder="xyz@gmail.com" required>
+
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+
+            <div class="input-field">
+                <label for="">Address</label>
+                <input type="text" id="address" placeholder="address" required>
+
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+
+            <div class="input-field">
+                <label for="">Contact Number</label>
+                <input type="text" id="number" placeholder="9999999999" required>
+
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+
+            <div class="input-field">
+                    <label for="">Password</label>
+                    <input type="text" id="pass1" placeholder="must contain a symbol,upper and lower case letters and a number (8-16 characters)" required>
+                    <i class="fa " aria-hidden="true"></i>
+                    <span></span>
+            </div>
+
+            <div class="input-field">
+                    <label for="">Confirm Password</label>
+                    <input type="text" id="pass2" required >
+                    <i class="fa " aria-hidden="true"></i>
+                    <span></span>
+            </div>
+
+            <div class="input-field">
+                <label for="">Blood group</label>
+                <select name="bloodGroup" id="bloodGroup" required>
+                    <option value="bloodGroup">Blood Group ?</option>
+                    <option value="aPositive">A+</option>
+                    <option value="bPositive">B+</option>
+                    <option value="oPositive">O+</option>
+                    <option value="aNegative">A-</option>
+                    <option value="bNegative">B-</option>
+                    <option value="oNegative">O-</option>
+                </select>
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+            <div class="input-field">
+                <label for="">Gender</label>
+                <select name="gender" id="gender" required>
+                    <option value="gender">gender ?</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="transgender">Transgender</option>
+                </select>
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+            <div class="input-field">
+              <label for="">Date of birth</label>
+                <input type="date" id="date" placeholder="Date Of Birth ?" required>
+                <i class="fa " aria-hidden="true"></i>
+                <span></span>
+            </div>
+
+
+
+                    <input type="submit" id="submit" value="Submit">
+
+
+        </div>
+
+    </div>
+
+    <script>
+
+document.getElementById("submit").addEventListener("click",function(event){
+    event.preventDefault();
+
+    checkData();
+});
+
+var username = document.getElementById("username");
+var email = document.getElementById("email");
+var pass1 = document.getElementById("pass1");
+var pass2 = document.getElementById("pass2");
+var address = document.getElementById("address");
+var number = document.getElementById("number");
+var gender = document.getElementById("gender");
+var blood = document.getElementById("bloodGroup");
+
+
+
+
+function checkData(){
+    var usernameValue = username.value.trim();
+    var emailValue = email.value.trim();
+    var pass1Value = pass1.value.trim();
+    var pass2Value = pass2.value.trim();
+    var addressValue = address.value.trim();
+    var numberValue = number.value.trim();
+    var genderValue = gender.value.trim();
+    var bloodValue = blood.value.trim();
+
+    if(bloodValue=="bloodGroup"){
+        setError(bloodGroup,"Blood Group can't be blank");
+    }
+    else{
+        setSuccess(bloodGroup);
+    }
+
+    if(genderValue=="gender"){
+        setError(gender,"gender can't be blank");
+    }
+    else{
+        setSuccess(gender);
+    }
+
+
+    if(usernameValue==""){
+        setError(username,"Username can't be blank");
+    }
+    else if(!isName(usernameValue)){
+        setError(username,"Name is not Valid");
+    }
+    else{
+        setSuccess(username);
+    }
+
+    if(emailValue==""){
+        setError(email,"Email can't be blank");
+    }
+    else if(!isEmail(emailValue)){
+        setError(email,"Email is not Valid");
+    }
+    else{
+        setSuccess(email);
+    }
+
+
+    if(pass1Value==""){
+        setError(pass1,"Password can't be blank");
+    }
+
+    else if(pass1Value.length<8) {
+      setError(pass1,"Your password must be at least 8 characters");
+    }
+    else if(pass1Value.length>16) {
+      setError(pass1,"Your password must not be more than 16 characters");
+    }
+    else if(!checkPassword(pass1Value)){
+      setError(pass1,"Your password must contain at least a symbol, upper and lower case letters and a number");
+    }
+
+    else{
+        setSuccess(pass1);
+    }
+
+
+    if(pass2Value==""){
+        setError(pass2,"Password can't be blank");
+    }
+
+    else if(pass1Value!==pass2Value){
+        setError(pass2,"Password does not match");
+    }
+    else{
+        setSuccess(pass2);
+    }
+
+    if(addressValue==""){
+        setError(address,"Address can't be blank");
+    }
+    else if(!isAddress(addressValue)){
+        setError(address,"Address is not Valid");
+    }
+    else{
+        setSuccess(address);
+    }
+
+    if(numberValue==""){
+        setError(number,"Contact number can't be blank");
+    }
+    else if(!isNumber(numberValue)){
+        setError(number,"Contact Number is not Valid");
+    }
+    else if(numberValue.length != 10){
+      setError(number,"Contact number must contain 10 digits");
+    }
+    else{
+        setSuccess(number);
+    }
+
+    if(bloodValue==""){
+        setError(blood,"Blood group can't be blank");
+    }
+    else if(!isBlood(bloodValue)){
+        setError(blood,"Blood group is not Valid");
+    }
+    else{
+        setSuccess(blood);
+    }
+
+
+}
+
+
+function setError(u, msg){
+  var parentBox =  u.parentElement;
+  parentBox.className="input-field error";
+var span =  parentBox.querySelector("span");
+var fa = parentBox.querySelector(".fa");
+span.innerText=msg;
+fa.className="fa fa-exclamation-circle";
+}
+
+function setSuccess(u){
+    var parentBox =  u.parentElement;
+    parentBox.className="input-field success";
+    var fa = parentBox.querySelector(".fa");
+    fa.className="fa fa-check-circle";
+}
+
+function isName(n){
+  var reg = /^[a-zA-Z ]+$/;
+  return reg.test(n);
+}
+
+function isEmail(e){
+    var reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(e);
+}
+
+function checkPassword(p)
+{
+    var reg = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return reg.test(p);
+}
+
+function isAddress(a)
+{
+  var reg = /^[a-zA-Z0-9\s,.'-]{5,}$/;
+  return reg.test(a);
+}
+
+function isNumber(c)
+{
+  var reg = /^[0-9]+$/;
+  return reg.test(c);
+}
+
+
+
+    </script>
+
+</body>
+</html>
